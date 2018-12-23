@@ -1,0 +1,16 @@
+<div class="block-component">
+  <table class="block-component__table">
+    <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let value of internalValues;">
+      <td>{{ value.timestamp }}</td>
+      <td>{{ value.value }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,12 @@
+.block {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.block_50 {
+    width: 50%;
+}
+
+.block_100 {
+    width: 100%;
+}

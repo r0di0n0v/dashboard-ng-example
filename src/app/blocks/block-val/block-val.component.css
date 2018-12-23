@@ -1,0 +1,11 @@
+.block-component {
+    min-height: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.block-component__val {
+    font-size: 100px;
+}

@@ -1,0 +1,5 @@
+.block-component {
+    min-height: 300px;
+    text-align: center;
+    overflow-y: auto;
+}

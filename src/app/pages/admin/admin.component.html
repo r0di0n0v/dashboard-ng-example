@@ -1,0 +1,86 @@
+<div>
+  <div class="edit-form">
+    <h3>Список дашбордов</h3>
+  </div>
+  <div
+    *ngFor="let dash of dashList; index as i;"
+    [class.dash-list-item_active]="i === activeDash"
+    class="dash-list-item"
+  >
+    <button
+      class="dash-list-item__btn dash-list-item__btn_blue"
+      (click)="setActiveDash(i)"
+    >Активировать</button>
+    <button
+      class="dash-list-item__btn dash-list-item__btn_green"
+      (click)="editDash(i)"
+    >Изменить</button>
+    <button
+      class="dash-list-item__btn dash-list-item__btn_red"
+      (click)="rmDash(i)"
+    >Удалить</button>
+    <div>Название: {{ dash.label }}</div>
+    <div>Шаблон: {{ dashTmplObj[dash.tmpl].label }}</div>
+  </div>
+  <br>
+  <div class="edit-form">
+    <h3>Редактирование дашборда</h3>
+    <div>
+      <div class="block block_24">Название дашборда:</div>
+      <div class="block block_76">
+        <input class="block__input" type="text" required [(ngModel)]="dashLabel">
+      </div>
+    </div>
+
+    <div>
+      <div class="block block_24">Шаблон:</div>
+      <div class="block block_76">
+        <select
+          class="block__input"
+          required [(ngModel)]="dashTmpl" (ngModelChange)="changeTemplate($event)"
+        >
+          <option
+                  *ngFor="let tmpl of dashTmplList"
+                  value="{{ tmpl.id }}"
+          >{{ tmpl.label }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div #blocksConfigSlot>
+      <div *ngFor="let slot of dashTmplSlots">
+        <div class="block block_24">{{ slot }}</div>
+
+        <div class="block block_38">
+          <select
+            class="block__input"
+            [(ngModel)]="dashBlockVal[slot]"
+          >
+            <option
+              *ngFor="let block of dashBlockList"
+              value="{{ block.id }}"
+            >{{ block.label }}</option>
+          </select>
+        </div>
+
+        <div class="block block_38">
+          <select
+            class="block__input"
+            [(ngModel)]="dashSourceVal[slot]"
+          >
+            <option
+              *ngFor="let source of dashSourceList"
+              value="{{ source.id }}"
+            >{{ source.label }}</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="error" *ngIf="error">{{ error }}</div>
+    <br>
+    <button (click)="addDash()">Сохранить</button>
+    <button (click)="clearDash()">Отменить</button>
+  </div>
+</div>
