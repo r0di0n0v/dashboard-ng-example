@@ -150,6 +150,7 @@ export class AdminComponent {
         this.dashList.push(newDash);
       }
       this.saveDashList();
+      this.clearDash();
     } else if (typeof newDash.label !== 'string' || newDash.label.length === 0) {
       this.error = 'Введите название шаблона';
     } else if (count === 0) {
